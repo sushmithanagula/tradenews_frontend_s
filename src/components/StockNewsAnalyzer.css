@@ -1,0 +1,308 @@
+.analyzer-container {
+  height: 100vh;
+  max-width: 900px;
+  padding: 2rem;
+  background: rgba(27, 27, 31, 0.85);
+  color: #f5f5f5;
+  font-family: 'Segoe UI', sans-serif;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(230, 57, 70, 0.3);
+  animation: fadeInUp 0.6s ease-out;
+  overflow-y: auto;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.center-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background: transparent;
+  /* or a fallback bg if needed */
+  padding: 0;
+  /* no margin here */
+  box-sizing: border-box;
+}
+
+
+/* 📱 Mobile Layout */
+@media (max-width: 480px) {
+  .analyzer-container {
+    width: 100vw;
+    height: 100vh;
+    padding: 1rem;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: linear-gradient(to bottom, #0d0d0d, #1a1a1a, #2e2e2e);
+  }
+}
+
+/* ✨ Fade-in Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🧭 Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.heading {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  background: linear-gradient(90deg, #e63946, #ffb3b3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.emoji {
+  -webkit-text-fill-color: initial;
+  background: none;
+  margin-right: 0.3rem;
+}
+
+/* 🎯 Stock Selector */
+.selector-section {
+  margin: 1.5rem 0;
+}
+
+.selector-section label {
+  font-weight: bold;
+  color: #f0f0f0;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* 🔘 Analyze Button */
+.analyze-btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #e63946;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  margin: 1.5rem auto;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 600;
+}
+
+.analyze-btn:hover {
+  background-color: #c72c3b;
+  transform: scale(1.03);
+}
+
+/* ❌ End Analysis Button */
+.end-btn {
+  background-color: #912f3c;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.end-btn:hover {
+  background-color: #e63946;
+}
+
+/* 📰 News Heading */
+.news-heading {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  text-align: center;
+  color: #ffb3b3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* ⏳ Loader */
+.loader {
+  margin-top: 1rem;
+  font-style: italic;
+  text-align: center;
+  color: #e63946;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left-color: #e63946;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 📦 News Cards */
+.news-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.news-card {
+  background-color: #2a2a32;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  border-left: 6px solid #aa6060;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.news-card:hover {
+  transform: translateY(-3px);
+}
+
+.news-card.positive {
+  border-left-color: #2ecc71;
+}
+
+.news-card.negative {
+  border-left-color: #e63946;
+}
+
+.news-card.neutral {
+  border-left-color: #f1c40f;
+}
+
+.news-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.news-summary {
+  font-size: 1rem;
+  color: #e0e0e0;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.trader-advice {
+  color: #ffcccc;
+  font-style: italic;
+}
+
+/* 🧾 Info Grid */
+.news-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.8rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fafafa;
+}
+
+.news-info-grid div {
+  background-color: #3c3c48;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* 🧠 Stock Recommendation */
+.stock-recommendation {
+  background-color: #2a2a32;
+  color: #e0e0e0;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  border-left: 6px solid #f39c12;
+  transition: transform 0.2s ease;
+}
+
+.stock-recommendation:hover {
+  transform: translateY(-2px);
+}
+
+.stock-recommendation h4 {
+  font-size: 1.2rem;
+  color: #ffb3b3;
+  margin-bottom: 0.5rem;
+}
+
+/* 🤖 AI Analysis */
+.ai-analysis {
+  background-color: #1f1f26;
+  color: #f0f0f0;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+  border-left: 4px solid #e63946;
+  font-style: italic;
+  white-space: pre-line;
+  line-height: 1.6;
+}
+
+/* 📱 Responsive Meta */
+.news-meta {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  color: #999;
+  font-style: italic;
+}
+
+@media (max-width: 480px) {
+  .news-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* 🌐 Scrollbar Styling */
+.analyzer-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.analyzer-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.analyzer-container::-webkit-scrollbar-thumb {
+  background-color: #e63946;
+  border-radius: 6px;
+}
